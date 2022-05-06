@@ -5,9 +5,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     var buttons = document.getElementsByTagName("button")
-    buttons.forEach((element) => {
+    var btnsArray = Array.prototype.slice.call(buttons)
+    btnsArray.forEach((element) => {
       element.addEventListener("click", () => {
-        console.log("element is clicked")
+        console.log("testing")
       })
     })
   </script>

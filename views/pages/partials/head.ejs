@@ -4,11 +4,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    document
-      .getElementsByTagName("button")
-      .addEventListener("click", function () {
-        console.log("button clicked")
+    var buttons = document.getElementsByTagName("button")
+    buttons.forEach((element) => {
+      element.addEventListener("click", () => {
+        console.log("element is clicked")
       })
+    })
   </script>
   <link
     href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"

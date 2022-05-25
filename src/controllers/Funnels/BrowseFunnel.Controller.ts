@@ -67,7 +67,7 @@ export default async (req: Request, res: Response) => {
     // if req.params.page =="" or / ==> index homeage
 
     let page
-    if (req.params.page === "" || "/") {
+    if (req.params.page === "") {
       page = funnel.pages.find((page) => page.title == "Home")
     } else {
       page = funnel.pages.find((page) => page.title === pageKey)

@@ -5,14 +5,13 @@ import { Funnels } from "../../models"
 // import ejs from "ejs"
 
 type QueyFunnelHost = {
-  baseDomain? :String,
-  proDomain? :String
+  baseDomain?: String
+  proDomain?: String
 }
-
 
 export default async (req: Request, res: Response) => {
   try {
-    const pageKey = req.params.page || "home"
+    const pageKey = req.params.page || "home" || "Home" || "index"
     const host = req.headers.host
     // const host = "test1.funnelshero-website.com"
     if (!host) {
@@ -28,10 +27,11 @@ export default async (req: Request, res: Response) => {
       })
     }
 
-    const domainRegex = /^(?:[a-zA-Z0-9\-]*[a-zA-Z0-9]\.)*([a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9])(?:\.[a-zA-Z]{2,})+$/
+    const domainRegex =
+      /^(?:[a-zA-Z0-9\-]*[a-zA-Z0-9]\.)*([a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9])(?:\.[a-zA-Z]{2,})+$/
     const hostRegex = domainRegex.exec(host)
-    
-    if(!hostRegex){
+
+    if (!hostRegex) {
       return res.status(400).json({
         status: "Failure",
         errors: [
@@ -44,9 +44,9 @@ export default async (req: Request, res: Response) => {
       })
     }
     const domainHost = hostRegex[1]
-    const query : QueyFunnelHost={}
+    const query: QueyFunnelHost = {}
 
-    if(domainHost==='funnelshero-website') {
+    if (domainHost === "funnelshero-website") {
       query.baseDomain = `${host.split(".")[0]}.funnelshero-website.com`
     } else {
       query.proDomain = host
@@ -65,15 +65,17 @@ export default async (req: Request, res: Response) => {
     const filePath = path.join(__dirname, `../../../views/pages`)
     // page.isPublished
     // if req.params.page =="" or / ==> index homeage
-    const page = funnel.pages.find(page => page.title === pageKey);
+    const page = funnel.pages.find((page) => page.title === pageKey)
 
-    if(!page) {
+    if (!page) {
       // render 404 ejs page
-      return res.render(`${filePath}/404.ejs`, { title: "OPPSS!"})
+      return res.render(`${filePath}/404.ejs`, { title: "OPPSS!" })
     }
 
-    const headerMenue = funnel.menus.find(menu => menu.title === "Header") || [];
-    const footerMenue = funnel.menus.find(menu => menu.title === "Footer") || [];
+    const headerMenue =
+      funnel.menus.find((menu) => menu.title === "Header") || []
+    const footerMenue =
+      funnel.menus.find((menu) => menu.title === "Footer") || []
 
     return res.render(`${filePath}/index.ejs`, {
       html: page.html,
@@ -81,7 +83,6 @@ export default async (req: Request, res: Response) => {
       footerMenue,
       title: page.title,
     })
-
   } catch (err) {
     console.log(err)
 

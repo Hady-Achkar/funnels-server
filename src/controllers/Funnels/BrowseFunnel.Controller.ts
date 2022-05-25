@@ -1,8 +1,6 @@
 import { Request, Response } from "express"
 import path from "path"
 import { Funnels } from "../../models"
-// import { IPage } from "../../types"
-// import ejs from "ejs"
 
 type QueyFunnelHost = {
   baseDomain?: String
@@ -13,7 +11,7 @@ export default async (req: Request, res: Response) => {
   try {
     const pageKey = req.params.page
     const host = req.headers.host
-    // const host = "test1.funnelshero-website.com"
+
     if (!host) {
       return res.status(400).json({
         status: "Failure",
@@ -67,14 +65,13 @@ export default async (req: Request, res: Response) => {
     // if req.params.page =="" or / ==> index homeage
 
     let page
-    if (pageKey === "" || "/") {
+    if (pageKey == "" || "/") {
       page = funnel.pages.find((page) => page.title == "Home")
     } else {
       page = funnel.pages.find((page) => page.title === pageKey)
     }
 
     if (!page) {
-      // render 404 ejs page
       return res.render(`${filePath}/404.ejs`, { title: "OPPSS!" })
     }
 
@@ -91,7 +88,6 @@ export default async (req: Request, res: Response) => {
     })
   } catch (err) {
     console.log(err)
-
     if (err instanceof Error) {
       return res.status(500).json({
         message: "Internal Server Error",

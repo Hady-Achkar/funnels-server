@@ -68,7 +68,7 @@ export default async (req: Request, res: Response) => {
 
     console.log(pageKey)
 
-    if (pageKey === "/") {
+    if (!pageKey) {
       page = funnel.pages.find((page) => page.title == "Home")
     } else {
       page = funnel.pages.find((page) => page.title === pageKey)

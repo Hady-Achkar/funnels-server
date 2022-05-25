@@ -65,7 +65,13 @@ export default async (req: Request, res: Response) => {
     const filePath = path.join(__dirname, `../../../views/pages`)
     // page.isPublished
     // if req.params.page =="" or / ==> index homeage
-    const page = funnel.pages.find((page) => page.title === pageKey)
+
+    let page
+    if (req.params.page === "" || "/") {
+      page = funnel.pages.find((page) => page.title === "Home")
+    } else {
+      page = funnel.pages.find((page) => page.title === pageKey)
+    }
 
     if (!page) {
       // render 404 ejs page

@@ -65,6 +65,9 @@ export default async (req: Request, res: Response) => {
     // if req.params.page =="" or / ==> index homeage
 
     let page
+
+    console.log(pageKey)
+
     if (pageKey == "" || "/") {
       page = funnel.pages.find((page) => page.title == "Home")
     } else {

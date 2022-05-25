@@ -11,7 +11,7 @@ type QueyFunnelHost = {
 
 export default async (req: Request, res: Response) => {
   try {
-    const pageKey = req.params.page || "home" || "Home" || "index"
+    const pageKey = req.params.page
     const host = req.headers.host
     // const host = "test1.funnelshero-website.com"
     if (!host) {
@@ -67,8 +67,8 @@ export default async (req: Request, res: Response) => {
     // if req.params.page =="" or / ==> index homeage
 
     let page
-    if (req.params.page === "") {
-      page = funnel.pages.find((page) => page.title === "Home" || "home")
+    if (req.params.page === "" || "/") {
+      page = funnel.pages.find((page) => page.title == "Home")
     } else {
       page = funnel.pages.find((page) => page.title === pageKey)
     }

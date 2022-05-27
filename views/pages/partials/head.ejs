@@ -5,7 +5,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
   <script>
-    console.log("Testing");
+    var h2 = document.getElementsByTagName("h2");
+    h2.addEventListener("click", function () {
+      console.log("Im clicked");
+    });
   </script>
   <link
     href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"

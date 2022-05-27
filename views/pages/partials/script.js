@@ -1,5 +1,1 @@
-const button = document.querySelector("button")
-
-button.addEventListener("click", () => {
-  console.log("Hello world")
-})
+console.log("Testing world")

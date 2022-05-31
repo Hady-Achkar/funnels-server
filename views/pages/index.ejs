@@ -5,7 +5,7 @@
     <main>
       <div class="max-w-3xl mx-auto bg-slate-50">
         <ul style="list-style: none;padding-top: 20px;" >
-          <% if (headerMenue) { %>
+          <% if (headerMenue.length != undefined) { %>
             <div>
             <% for(var i=0; i<headerMenue.links.length; i++) {%>
               <li style=" display: inline; margin: 5px;">
@@ -17,7 +17,7 @@
         </ul>
       <%- html %>
         <ul style="list-style: none;padding-top: 20px;" >
-          <% if (footerMenue) { %>
+          <% if (footerMenue.length != undefined) { %>
           <div>
             <% for(var i=0; i<footerMenue.links.length; i++) {%>
               <li style=" display: inline; margin: 5px;">

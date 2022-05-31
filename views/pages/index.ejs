@@ -2,16 +2,32 @@
 <html lang="en">
   <%- include('partials/head.ejs'); %>
   <body>
-    <header>Header here</header>
-    <main class="max-w-3xl mx-auto">
+    <main>
+      <div class="max-w-3xl mx-auto">
         <ul style="list-style: none;padding-top: 20px;" >
-      <% for(var i=0; i<headerMenue.links.length; i++) {%>
-          <li style=" display: inline; margin: 5px;">
-              <a class="nav-link" href="<%= headerMenue.links[i].href %>"><%= headerMenue.links[i].title %></a>
-          </li>
-      <% } %>
-      </ul>
+          <% if (headerMenue) { %>
+            <div>
+            <% for(var i=0; i<headerMenue.links.length; i++) {%>
+              <li style=" display: inline; margin: 5px;">
+                <a class="nav-link" href="<%= headerMenue.links[i].href %>"><%= headerMenue.links[i].title %></a>
+              </li>
+            <% } %>
+            </div>
+          <% } %>
+        </ul>
       <%- html %>
+        <ul style="list-style: none;padding-top: 20px;" >
+          <% if (headerMenue) { %>
+          <div>
+            <% for(var i=0; i<footerMenue.links.length; i++) {%>
+              <li style=" display: inline; margin: 5px;">
+                <a class="nav-link" href="<%= headerMenue.links[i].href %>"><%= headerMenue.links[i].title %></a>
+              </li>
+            <% } %>
+          </div>
+          <% } %>
+        </ul>
+      </div>
     </main>
   </body>
 </html>

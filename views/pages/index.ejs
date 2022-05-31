@@ -19,21 +19,15 @@
           <% } %>
         </ul>
       <%- html %>
-      <ul style="list-style: none;padding-top: 20px;" class=" pt-8 flex items-center justify-between px-6" >
-        <a href="/" class="font-semibold text-xl capitalize text-gray-700 hover:text-gray-600"><%= funnelTitle %></a>
-        <% if (footerMenue.links) { %>
-          <div>
-          <% for(var i=0; i<footerMenue.links.length; i++) {%>
-            <li style=" display: inline; margin: 5px;">
-              <a class="nav-link capitalize text-md text-gray-900 hover:underline" href="<%= footerMenue.links[i].href %>"><%= footerMenue.links[i].title %></a>
-            </li>
-          <% } %>
-          </div>
-        <% } else{ %>
-          <div></div>
-        <% } %>
-      </ul>
+      <footer  aria-labelledby="footer-heading">
+        <div class="mt-12 border-t border-gray-200 pt-8">
+          <p class="text-base text-gray-400 xl:text-center">Powered by <a href="https://www.funnelshero.com" class="text-indigo-700 hover:text-indigo-600">Funnelshero</a></p>
+        </div>
+      </div>
+    </footer>
       </div>
     </main>
   </body>
 </html>
+
+

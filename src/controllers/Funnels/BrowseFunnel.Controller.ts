@@ -44,13 +44,16 @@ export default async (req: Request, res: Response) => {
     const domainHost = hostRegex[1];
     const query: QueyFunnelHost = {};
 
-    // if (domainHost === "funnelshero-website") {
-    query.baseDomain = `${host.split(".")[0]}.funnelshero-website.com`;
-    // } else {
-    //   query.proDomain = host;
-    // }
+    // // if (domainHost === "funnelshero-website") {
+    // query.baseDomain = `${host.split(".")[0]}.funnelshero-website.com`;
+    // // } else {
+    // //   query.proDomain = host;
+    // // }
 
-    const funnel = await Funnels.findOne(query).populate("pages");
+    const subdomain = req.subdomains[0];
+    const funnel = await Funnels.findOne({ title: subdomain }).populate(
+      "pages"
+    );
 
     if (!funnel) {
       return res.status(404).json({

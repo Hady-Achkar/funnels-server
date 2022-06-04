@@ -89,6 +89,7 @@ export default async (req: Request, res: Response) => {
       footerMenue,
       title: page.title,
       funnelTitle: funnel.title,
+      image: funnel.image,
     });
   } catch (err) {
     console.log(err);

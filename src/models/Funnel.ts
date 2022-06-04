@@ -1,9 +1,9 @@
-import { Schema, model } from "mongoose"
-import { IFunnel } from "../types"
-import * as dotenv from "dotenv"
-import { IMenu, FunnelUser } from "../types"
+import { Schema, model } from "mongoose";
+import { IFunnel } from "../types";
+import * as dotenv from "dotenv";
+import { IMenu, FunnelUser } from "../types";
 
-dotenv.config()
+dotenv.config();
 const FunnelUsersSchema = new Schema(
   {
     role: {
@@ -25,7 +25,7 @@ const FunnelUsersSchema = new Schema(
     versionKey: false,
     minimize: false,
   }
-)
+);
 const MenuSchema = new Schema<IMenu>(
   {
     title: {
@@ -54,7 +54,7 @@ const MenuSchema = new Schema<IMenu>(
     minimize: false,
     versionKey: false,
   }
-)
+);
 const FunnelSchema = new Schema(
   {
     title: {
@@ -62,6 +62,9 @@ const FunnelSchema = new Schema(
       required: true,
       trim: true,
       unique: true,
+    },
+    image: {
+      type: String,
     },
     metaTags: {
       type: String,
@@ -125,16 +128,16 @@ const FunnelSchema = new Schema(
     versionKey: false,
     minimize: false,
   }
-)
+);
 FunnelSchema.pre("save", async function (next) {
   this.baseDomain =
-    `${this.title.toLowerCase()}.funnelshero-website.com`.replace(/\s/g, "-")
-  next()
-})
+    `${this.title.toLowerCase()}.funnelshero-website.com`.replace(/\s/g, "-");
+  next();
+});
 FunnelSchema.index({
   title: "text",
   proDomain: "text",
   baseDomain: "text",
-})
+});
 
-export default model<IFunnel>("Funnel", FunnelSchema)
+export default model<IFunnel>("Funnel", FunnelSchema);

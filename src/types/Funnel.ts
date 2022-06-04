@@ -1,5 +1,5 @@
-import { Document } from 'mongoose';
-import { IPage, IUser, ROLES } from '.';
+import { Document } from "mongoose";
+import { IPage, IUser, ROLES } from ".";
 
 export interface ILink {
   title: string;
@@ -18,6 +18,7 @@ export interface FunnelUser extends IUser, Document {
 export interface IFunnel extends Document {
   title: string;
   owner: string;
+  image: string;
   metaTags: string;
   category: string;
   createdAt: Date;

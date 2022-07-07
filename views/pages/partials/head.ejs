@@ -7,7 +7,13 @@
     async
     src="https://www.googletagmanager.com/gtag/js?id=G-LYLC6FLSPC"
   ></script>
-  <script async src="https://api.countapi.xyz/hit/funnelshero-website.com/fb836a92-f362-4251-af86-8d0e34320240?callback=countVisits"></script>
+
+  <script>
+    var scriptElement = document.createElement("script");
+    scriptElement.src = "https://api.countapi.xyz/hit/" + document.location.href + "/fb836a92-f362-4251-af86-8d0e34320240?callback=countVisits";
+    scriptElement.async = true;
+    document.head.appendChild(scriptElement);
+  </script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {

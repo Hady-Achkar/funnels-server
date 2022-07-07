@@ -10,7 +10,7 @@
   <script>
     function Count() {
       var xhr = new XMLHttpRequest();
-      xhr.open("GET", "https://api.countapi.xyz/hit/funnelshero-website.com");
+      xhr.open("GET", `https://api.countapi.xyz/hit/${document.location.href}`);
       xhr.responseType = "json";
       xhr.onload = function () {
         alert(`This button has been clicked ${this.response.value} times!`);
